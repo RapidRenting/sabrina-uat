@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sabrina McMorran, RMT</title>
+<meta name="description" content="Design mock-up C, bold colour-block direction, for the Sabrina The RMT home page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --mulberry: #5b3a5d;
+  --mulberry-deep: #402742;
+  --slate: #315471;
+  --slate-deep: #243f56;
+  --cream: #fff6ea;
+  --paper: #fffcf6;
+  --cream-deep: #f4e4cc;
+  --blush: #ecbfab;
+  --wood: #dcc3a1;
+  --ink: #2a2330;
+  --focus: #0a5f96;
+  --gap: 8px;
+  --shell: min(1240px, calc(100% - 32px));
+  --font: "Schibsted Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 1rem; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration-thickness: 0.08em; text-underline-offset: 0.18em; }
+a, p, li, dd, address { overflow-wrap: anywhere; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.05; letter-spacing: -0.02em; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+.on-dark { --focus: #ffd59e; color: var(--cream); }
+.shell { width: var(--shell); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* Mock-up banner + skip link */
+.mock-banner { margin: 0; padding: 6px 16px; background: var(--ink); color: var(--cream); font-size: 0.875rem; text-align: center; }
+.skip-link { position: absolute; left: 16px; top: -100px; z-index: 50; padding: 12px 16px; background: var(--paper); color: var(--mulberry); font-weight: 700; }
+.skip-link:focus { top: 8px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.35em;
+  min-height: 48px; padding: 0.6rem 1.35rem;
+  border: 2px solid transparent; border-radius: 999px;
+  font: inherit; font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer;
+}
+.btn-cream { background: var(--cream); color: var(--mulberry-deep); }
+.btn-cream:hover { background: #fff; }
+.btn-line { border-color: currentColor; background: transparent; }
+.btn-line:hover { background: rgba(255, 246, 234, 0.12); }
+.btn-mulberry { background: var(--mulberry); color: var(--cream); }
+.btn-mulberry:hover { background: var(--mulberry-deep); }
+.btn-slate { background: var(--slate); color: var(--cream); }
+.btn-slate:hover { background: var(--slate-deep); }
+.link { font-weight: 700; }
+.link-row { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.link-row a, .tile .link { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Header */
+.site-header { background: var(--cream); border-bottom: 2px solid var(--mulberry); }
+.header-inner { display: flex; align-items: center; gap: 12px 20px; min-height: 72px; padding-block: 8px; }
+.brand { display: flex; align-items: center; gap: 10px; margin-right: auto; color: var(--mulberry); text-decoration: none; }
+.brand img { width: 44px; height: 44px; }
+.brand-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.nav-list { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0; padding: 0; list-style: none; }
+.nav-list a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 10px; color: var(--ink); font-weight: 600; text-decoration: none; border-radius: 6px; }
+.nav-list a:hover { color: var(--mulberry); text-decoration: underline; }
+.header-book { min-height: 44px; padding-inline: 1.1rem; }
+.lang { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; color: var(--slate); font-weight: 700; }
+.brand { order: 0; } .site-nav { order: 1; } .header-book { order: 2; }
+.menu-btn { order: 3; display: none; min-height: 44px; min-width: 44px; padding: 0 14px; border: 2px solid var(--mulberry); border-radius: 999px; background: transparent; color: var(--mulberry); font: inherit; font-weight: 700; cursor: pointer; }
+
+/* Hero: split screen, portrait edge to edge */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, min(44vw, 760px)); background: var(--mulberry); }
+.hero-copy { display: flex; flex-direction: column; justify-content: center; gap: 1rem; padding: clamp(1.75rem, 3.5vw, 3rem) clamp(16px, 5vw, 5rem) clamp(1.75rem, 3.5vw, 2.75rem) max(16px, calc((100vw - 1240px) / 2)); }
+.hero h1 { font-size: clamp(2.6rem, 5.4vw, 5rem); font-weight: 850; letter-spacing: -0.035em; line-height: 0.95; }
+.hero-title { margin-top: -0.35rem; color: var(--blush); font-size: clamp(1.2rem, 1.9vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em; }
+.hero-lede { max-width: 34ch; font-size: clamp(1.15rem, 1.5vw, 1.35rem); line-height: 1.45; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-contact { max-width: 52ch; font-size: 0.98rem; color: #f5e6ef; }
+.hero-photo { position: relative; min-height: 100%; background: var(--slate); }
+.hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+
+/* Bento at a glance */
+.glance { padding-block: var(--gap) clamp(3rem, 6vw, 5rem); }
+.bento { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 0.95fr); grid-template-rows: auto auto; gap: var(--gap); margin-block: 0; padding: 0; list-style: none; }
+.tile { display: flex; flex-direction: column; gap: 0.4rem; padding: clamp(1.25rem, 2.4vw, 2rem); }
+.tile-label { font-size: 1rem; font-weight: 700; }
+.tile-big { font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.tile .link { margin-top: auto; }
+.t-where { grid-column: 1; grid-row: 1 / 3; background: var(--paper); color: var(--mulberry-deep); box-shadow: inset 0 0 0 2px var(--wood); }
+.t-where .tile-label { color: var(--slate); }
+.t-where .tile-big { font-size: clamp(1.9rem, 3.4vw, 3rem); }
+.t-entrance { grid-column: 2 / 4; grid-row: 1; padding-block: 1rem; flex-direction: row; align-items: center; gap: 1rem; background: var(--blush); color: var(--mulberry-deep); }
+.t-entrance svg { flex: none; width: 52px; height: 52px; }
+.t-entrance .tile-label { color: var(--ink); }
+.t-entrance .entrance-big { font-size: clamp(1.3rem, 2.1vw, 1.75rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.t-hours { grid-column: 2; grid-row: 2; background: var(--slate); }
+.t-hours .tile-label { color: var(--cream-deep); }
+.t-hours .tile-big { font-size: clamp(2rem, 3.6vw, 3.25rem); }
+.t-hours .tile-sub { font-size: 1.1rem; }
+.t-fees { grid-column: 3; grid-row: 2; background: var(--wood); color: var(--ink); }
+.t-fees .tile-label { color: var(--mulberry-deep); }
+.t-fees .fee-range { display: block; color: var(--mulberry-deep); font-size: clamp(2.3rem, 4.2vw, 3.9rem); font-weight: 850; letter-spacing: -0.04em; line-height: 0.95; font-variant-numeric: tabular-nums; }
+.t-fees .fee-tax { display: block; margin-top: 0.3rem; font-size: 1.05rem; font-weight: 600; }
+.t-fees .fee-lengths { font-size: 1.15rem; font-weight: 700; }
+
+/* Section heads */
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1rem 3rem; align-items: end; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.sec-head h2 { color: var(--mulberry); font-size: clamp(2.2rem, 4.6vw, 3.75rem); font-weight: 850; letter-spacing: -0.035em; }
+.sec-head p { max-width: 58ch; font-size: 1.125rem; }
+
+/* Location */
+.location { padding-bottom: clamp(3.5rem, 7vw, 6rem); }
+.loc-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
+.loc-main { display: flex; flex-direction: column; gap: 1.25rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--paper); box-shadow: inset 0 0 0 2px var(--cream-deep); }
+.loc-main h3 { color: var(--mulberry); font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 850; }
+.loc-main address { font-style: normal; font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 700; line-height: 1.3; color: var(--ink); }
+.entrance-note { display: grid; gap: 0.35rem; padding: 1.1rem 1.25rem; background: var(--blush); color: var(--ink); border-left: 8px solid var(--mulberry); }
+.entrance-note-title { color: var(--mulberry-deep); font-size: 1.1rem; font-weight: 800; }
+.slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.slot { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 0.6rem; min-height: 9rem; padding: 1rem; background: var(--cream-deep); color: var(--mulberry-deep); border: 2px dashed #a98b6a; }
+.slot svg { width: 34px; height: 34px; color: var(--mulberry); }
+.slot p { font-weight: 600; line-height: 1.3; }
+.loc-side { display: flex; flex-direction: column; gap: 1.25rem; margin-top: clamp(0px, 5vw, 4rem); padding: clamp(1.5rem, 3vw, 2.5rem); background: var(--slate); }
+.loc-side h4 { font-size: 1.35rem; font-weight: 800; }
+.hours { display: grid; grid-template-columns: minmax(0, 1fr) auto; margin: 0; border-top: 2px solid rgba(255, 246, 234, 0.35); }
+.hours dt, .hours dd { margin: 0; padding: 0.7rem 0; border-bottom: 2px solid rgba(255, 246, 234, 0.35); }
+.hours dt { padding-right: 1rem; font-weight: 600; align-self: center; }
+.hours dd { font-size: clamp(1.3rem, 2.2vw, 1.75rem); font-weight: 800; letter-spacing: -0.02em; text-align: right; white-space: nowrap; }
+.side-contact { display: grid; gap: 0.25rem; }
+.side-note { font-size: 1rem; }
+.side-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; padding-top: 0.25rem; }
+.map { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; padding: clamp(1.25rem, 3vw, 2rem); background: var(--cream-deep); background-image: linear-gradient(rgba(49, 84, 113, 0.09) 2px, transparent 2px), linear-gradient(90deg, rgba(49, 84, 113, 0.09) 2px, transparent 2px); background-size: 48px 48px; min-height: 12rem; }
+.map svg { width: 46px; height: 46px; color: var(--mulberry); flex: none; }
+.map p { flex: 1 1 18rem; max-width: 46ch; font-size: 0.98rem; }
+
+/* About */
+.about { background: var(--slate); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 0; }
+.about-art { display: flex; align-items: center; justify-content: center; padding: clamp(2rem, 5vw, 4rem); background: var(--mulberry); margin-top: calc(-1 * clamp(2rem, 4vw, 3.5rem)); }
+.about-art img { width: min(100%, 320px); height: auto; }
+.about-copy { display: flex; flex-direction: column; gap: 1.25rem; padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4.5rem); }
+.about-copy h2 { font-size: clamp(2.2rem, 4.6vw, 3.75rem); font-weight: 850; letter-spacing: -0.035em; }
+.about-copy p { max-width: 62ch; font-size: 1.125rem; line-height: 1.6; }
+.about-copy .link { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Fees */
+.fees { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.fees .sec-head .link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 0.35rem; }
+.fee-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); margin: 0; padding: 0; list-style: none; }
+.fee { display: flex; flex-direction: column; gap: 0.3rem; padding: clamp(1.25rem, 2.4vw, 2rem); background: var(--mulberry); }
+.fee:nth-child(3) { background: var(--mulberry-deep); }
+.fee:nth-child(4) { background: var(--slate); }
+.fee-dur { font-size: 1.1rem; font-weight: 700; }
+.fee-price { font-size: clamp(3rem, 6vw, 5.25rem); font-weight: 850; letter-spacing: -0.045em; line-height: 0.95; font-variant-numeric: tabular-nums; }
+.fee-tax-s { display: block; margin-top: 0.4rem; font-size: 1rem; font-weight: 500; letter-spacing: 0; }
+.fee-note { margin-top: auto; padding-top: 1rem; font-weight: 700; }
+.fee-request { background: transparent; color: var(--mulberry-deep); box-shadow: inset 0 0 0 2px var(--mulberry); }
+.fee-request .fee-note { color: var(--mulberry); }
+
+/* CTA */
+.cta { background: var(--mulberry); }
+.cta-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem; align-items: center; padding-block: clamp(3rem, 6vw, 5rem); }
+.cta h2 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 850; letter-spacing: -0.035em; }
+.cta-lede { margin-top: 0.75rem; font-size: 1.25rem; }
+.cta-list { display: grid; gap: 0.6rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.cta-list li { padding-left: 1rem; border-left: 4px solid var(--blush); }
+.cta-privacy { margin-top: 1.25rem; font-size: 0.98rem; color: #f5e6ef; }
+.cta-book { justify-self: end; display: flex; flex-direction: column; align-items: stretch; width: min(100%, 22rem); padding: 1.25rem; background: var(--cream); color: var(--mulberry-deep); --focus: #0a5f96; }
+.cta-book .btn { min-height: 64px; font-size: 1.2rem; }
+.cta-book-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Footer */
+.footer { background: var(--ink); }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; padding-block: 3.5rem 2.5rem; }
+.footer img { width: 210px; height: auto; margin-bottom: 1rem; }
+.footer h2 { margin-bottom: 0.75rem; color: var(--blush); font-size: 1.1rem; font-weight: 800; letter-spacing: 0; }
+.footer p, .footer address { margin-bottom: 0.4rem; font-style: normal; }
+.footer-name { font-weight: 800; font-size: 1.1rem; }
+.small { font-size: 0.92rem; color: #e9dce7; }
+.footer-links { margin: 0; padding: 0; list-style: none; }
+.footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-block: 1.25rem 2rem; border-top: 1px solid rgba(255, 246, 234, 0.25); font-size: 0.92rem; color: #e9dce7; }
+
+/* Sticky phone booking bar */
+.book-bar { display: none; }
+
+/* Tablet */
+@media (max-width: 1080px) {
+  .nav-list a { padding: 0 7px; }
+  .bento { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .t-where { grid-column: 1 / -1; grid-row: 1; }
+  .t-entrance { grid-column: 1 / -1; grid-row: 2; }
+  .t-hours { grid-column: 1; grid-row: 3; }
+  .t-fees { grid-column: 2; grid-row: 3; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .menu-btn { display: inline-flex; align-items: center; }
+  .site-nav { display: none; flex-basis: 100%; order: 10; }
+  .site-header.open .site-nav { display: block; }
+  .nav-list { flex-direction: column; padding-bottom: 8px; }
+  .nav-list a { padding: 0 4px; }
+  .header-inner { flex-wrap: wrap; }
+  .sec-head, .loc-grid, .cta-grid { grid-template-columns: minmax(0, 1fr); }
+  .loc-side { margin-top: 0; }
+  .cta-book { justify-self: start; }
+  .fee-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* Phone */
+@media (max-width: 720px) {
+  body { padding-bottom: 76px; }
+  html { scroll-padding-bottom: 90px; }
+  .book-bar { position: fixed; z-index: 40; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--mulberry-deep); box-shadow: 0 -2px 0 var(--blush); }
+  .book-bar p { flex: 1 1 auto; font-size: 0.95rem; font-weight: 600; line-height: 1.2; }
+  .book-bar .btn { flex: 1 1 auto; min-height: 52px; font-size: 1.1rem; }
+  .hero { grid-template-columns: minmax(0, 1fr) 38%; grid-template-areas: "name photo" "rest rest"; }
+  .hero-copy { display: contents; }
+  .hero-name { grid-area: name; align-self: end; padding: 1.5rem 12px 1rem 16px; }
+  .hero-photo { grid-area: photo; min-height: 11rem; }
+  .hero-rest { grid-area: rest; display: flex; flex-direction: column; gap: 1rem; padding: 1rem 16px 1.75rem; }
+  .hero h1 { font-size: clamp(2.1rem, 9.5vw, 2.9rem); }
+  .hero-title { margin-top: 0.45rem; font-size: 1.1rem; }
+  .hero-lede { font-size: 1.1rem; }
+  .hero-actions .btn { flex: 1 1 12rem; }
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .t-where, .t-entrance, .t-hours, .t-fees { grid-column: 1; grid-row: auto; }
+  .tile { padding: 1.1rem 1.15rem; }
+  .t-entrance svg { width: 40px; height: 40px; }
+  .slots { grid-template-columns: minmax(0, 1fr); }
+  .slot { min-height: 6.5rem; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+  .about-art { margin-top: 0; justify-content: flex-start; padding: 1.5rem 16px; width: calc(100% + 32px); margin-left: -16px; }
+  .about-art img { width: 120px; }
+  .about-copy { padding: 2rem 0 3rem; }
+  .footer-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .brand-name { font-size: 1.05rem; }
+  .brand img { width: 38px; height: 38px; }
+  .header-inner { gap: 8px 10px; }
+  .header-book { padding-inline: 0.9rem; }
+  .fee-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .hours { grid-template-columns: minmax(0, 1fr); }
+  .hours dt { padding: 0.7rem 0 0; border-bottom: 0; }
+  .hours dd { padding-top: 0.1rem; text-align: left; white-space: normal; }
+}
+@media (max-width: 400px) {
+  .brand-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (min-width: 721px) {
+  .hero-name, .hero-rest { display: contents; }
+}
+@media (min-width: 1700px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 760px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<p class="mock-banner">Design mock-up for review. Not the live website.</p>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="shell header-inner">
+    <a class="brand" href="#">
+      <img src="https://rapidrenting.github.io/sabrina-uat/v2/assets/sabrinathermt-mark-mulberry-168.webp" width="168" height="168" alt="">
+      <span class="brand-name">Sabrina The RMT</span>
+    </a>
+    <a class="btn btn-mulberry header-book" href="#">Book<span class="sr-only"> (opens Jane)</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="#">Location</a></li>
+        <li><a href="#">Services &amp; pricing</a></li>
+        <li><a href="#">About me</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a class="lang" href="#" lang="fr" hreflang="fr">Français</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero on-dark" aria-labelledby="hero-name">
+    <div class="hero-copy">
+      <div class="hero-name">
+        <h1 id="hero-name">Sabrina McMorran</h1>
+        <p class="hero-title">Registered Massage Therapist</p>
+      </div>
+      <div class="hero-rest">
+        <p class="hero-lede">Care that meets you where you are. Massage therapy that fits your body, your work and the things you love to do.</p>
+        <div class="hero-actions">
+          <a class="btn btn-cream" href="#">Book online<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a>
+          <a class="btn btn-line" href="#locations">Where to find me</a>
+        </div>
+        <p class="hero-contact">Questions? Email <a href="#">massage@sabrinathermt.com</a>. For same-day matters, text or call <a href="#">613-801-6160</a>.</p>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://rapidrenting.github.io/sabrina-uat/v2/assets/sabrina-headshot-720.webp" width="720" height="720" alt="Portrait of Sabrina McMorran">
+    </div>
+  </section>
+
+  <section class="glance" aria-label="At a glance">
+    <ul class="shell bento">
+      <li class="tile t-where">
+        <p class="tile-label">Where</p>
+        <p class="tile-big">Unit 1, 481 Gladstone Avenue</p>
+        <a class="link" href="#locations">Location details</a>
+      </li>
+      <li class="tile t-entrance">
+        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40V12h20v28"/><path d="M28 24h12"/><path d="M34 18l6 6-6 6"/><path d="M4 40h40"/></svg>
+        <div>
+          <p class="tile-label">Finding the entrance</p>
+          <p class="entrance-big">The entrance is around the back.</p>
+        </div>
+      </li>
+      <li class="tile t-hours on-dark">
+        <p class="tile-label">Hours</p>
+        <p class="tile-big">Monday to Thursday</p>
+        <p class="tile-sub">Plus some Fridays and Sundays.</p>
+        <a class="link" href="#">See my open times on Jane<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a>
+      </li>
+      <li class="tile t-fees">
+        <p class="tile-label">Fees</p>
+        <p><span class="fee-range">$120 to $200</span> <span class="fee-tax">before tax.</span></p>
+        <p class="fee-lengths">45, 60 or 90 minutes</p>
+        <a class="link" href="#">See services &amp; pricing</a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="location" id="locations" aria-labelledby="loc-h">
+    <div class="shell">
+      <div class="sec-head">
+        <h2 id="loc-h">Where to find me</h2>
+        <p>I see clients at one location in Centretown, Ottawa. Jane shows current availability, appointment options, fees and policies.</p>
+      </div>
+      <article class="loc-grid" id="gladstone" aria-labelledby="gladstone-h">
+        <div class="loc-main">
+          <h3 id="gladstone-h">Gladstone</h3>
+          <address>Unit 1, 481 Gladstone Avenue, Ottawa, ON K1R 5N7</address>
+          <div class="entrance-note" role="note">
+            <p class="entrance-note-title">Finding the entrance</p>
+            <p>The entrance is around the back of the building. Please walk around to the back instead of using the front door.</p>
+          </div>
+          <div class="slots">
+            <div class="slot">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4H9Zm3 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z" fill="currentColor"/></svg>
+              <p>Photo of the entrance coming soon</p>
+            </div>
+            <div class="slot">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-2 14.5v-9l7 4.5-7 4.5Z" fill="currentColor"/></svg>
+              <p>Video of the way in coming soon</p>
+            </div>
+          </div>
+        </div>
+        <div class="loc-side on-dark">
+          <h4>Bookable hours</h4>
+          <dl class="hours">
+            <dt>Monday</dt><dd>8 a.m.–3 p.m.</dd>
+            <dt>Tuesday</dt><dd>8 a.m.–3 p.m.</dd>
+            <dt>Wednesday</dt><dd>11 a.m.–5 p.m.</dd>
+            <dt>Thursday</dt><dd>12 p.m.–7 p.m.</dd>
+            <dt>Some Fridays and Sundays</dt><dd>9:30 a.m.–2:30 p.m.</dd>
+          </dl>
+          <p><a class="link" href="#">See my open times on Jane<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a></p>
+          <p class="side-contact">
+            <span><strong>Email (preferred):</strong> <a href="#">massage@sabrinathermt.com</a></span>
+            <span><strong>Text or call:</strong> <a href="#">613-801-6160</a></span>
+          </p>
+          <p class="side-note">There’s a designated waiting area. Free two-hour street parking is available on Gladstone Avenue and nearby side streets.</p>
+          <p class="side-note"><strong>Access:</strong> There are steps up to the back entrance, so unfortunately there isn’t a step-free way in, and the washroom isn’t accessible either. If you have any questions about access, email me before you book and I’m happy to talk it through.</p>
+          <div class="side-actions">
+            <a class="btn btn-cream" href="#">Book online<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a>
+            <div class="link-row">
+              <a class="link" href="#">Get directions<span aria-hidden="true"> ↗</span></a>
+              <a class="link" href="#">Location details</a>
+            </div>
+          </div>
+        </div>
+        <div class="map">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-13A7 7 0 1 0 5 9c0 6.6 7 13 7 13Zm0-9.5A3.5 3.5 0 1 1 12 5a3.5 3.5 0 0 1 0 7.5Z" fill="currentColor"/></svg>
+          <button class="btn btn-slate" type="button">Show map for Gladstone</button>
+          <p>The map is provided by Google and loads only after you choose to show it.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about on-dark" aria-labelledby="about-h">
+    <div class="shell about-grid">
+      <div class="about-art">
+        <img src="https://rapidrenting.github.io/sabrina-uat/v2/assets/sabrinathermt-mark-cream-480.webp" width="480" height="480" alt="" loading="lazy">
+      </div>
+      <div class="about-copy">
+        <h2 id="about-h">About me</h2>
+        <p>My background as a competitive dancer got me interested in movement and body awareness. I tailor each treatment to your needs and may use a blend of Swedish massage, myofascial work, trigger-point techniques, joint mobilizations and stretching. Treatment may also include work to the muscles around the jaw and temporomandibular joint (TMJ), when appropriate and with your consent.</p>
+        <a class="link" href="#">More about me</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="fees" aria-labelledby="fees-h">
+    <div class="shell">
+      <div class="sec-head">
+        <h2 id="fees-h">Appointment fees</h2>
+        <div>
+          <p>I tailor massage therapy to your needs. Prices are in Canadian dollars and don’t include tax.</p>
+          <a class="link" href="#">See services &amp; pricing</a>
+        </div>
+      </div>
+      <ul class="fee-list">
+        <li class="fee fee-request">
+          <span class="fee-dur">30 minutes</span>
+          <span class="fee-price">$100 <span class="fee-tax-s">before tax</span></span>
+          <span class="fee-note">By request only</span>
+        </li>
+        <li class="fee on-dark">
+          <span class="fee-dur">45 minutes</span>
+          <span class="fee-price">$120 <span class="fee-tax-s">before tax</span></span>
+          <span class="fee-note">Book online</span>
+        </li>
+        <li class="fee on-dark">
+          <span class="fee-dur">60 minutes</span>
+          <span class="fee-price">$140 <span class="fee-tax-s">before tax</span></span>
+          <span class="fee-note">Book online</span>
+        </li>
+        <li class="fee on-dark">
+          <span class="fee-dur">90 minutes</span>
+          <span class="fee-price">$200 <span class="fee-tax-s">before tax</span></span>
+          <span class="fee-note">Book online</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta on-dark" aria-labelledby="cta-h">
+    <div class="shell cta-grid">
+      <div>
+        <h2 id="cta-h">Ready to book?</h2>
+        <p class="cta-lede">Use Jane to see available appointments at Gladstone.</p>
+        <ul class="cta-list">
+          <li><strong>Email (preferred):</strong> <a href="#">massage@sabrinathermt.com</a>. Please allow 1 to 2 business days for me to reply.</li>
+          <li><strong>Text or call:</strong> <a href="#">613-801-6160</a>. For same-day matters, like running late for an appointment.</li>
+        </ul>
+        <p class="cta-privacy">Please don’t include personal health information in emails, text messages or voicemail. <a href="#">All contact details</a></p>
+      </div>
+      <div class="cta-book">
+        <a class="btn btn-mulberry" href="#">Book online<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer on-dark">
+  <div class="shell footer-grid">
+    <div>
+      <img src="https://rapidrenting.github.io/sabrina-uat/v2/assets/sabrinathermt-logo-cream.svg" width="210" height="80" alt="" loading="lazy">
+      <p class="footer-name">Sabrina McMorran, RMT</p>
+      <p>Individualized massage therapy in Ottawa.</p>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <p>Text or call: <a href="#">613-801-6160</a></p>
+      <p>Email (preferred): <a href="#">massage@sabrinathermt.com</a></p>
+      <p class="small">Please don’t include personal health information in emails, text messages or voicemail.</p>
+    </div>
+    <div>
+      <h2>Location</h2>
+      <address>Unit 1, 481 Gladstone Avenue, Ottawa, ON K1R 5N7</address>
+      <p class="small">The entrance is around the back of the building. Please walk around to the back instead of using the front door.</p>
+      <ul class="footer-links">
+        <li><a href="#">Get directions</a></li>
+        <li><a href="#">Hours and location details</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Information</h2>
+      <ul class="footer-links">
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">About me</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Cancellation policy</a></li>
+        <li><a href="#">Insurance receipts</a></li>
+        <li><a href="#">Services &amp; pricing</a></li>
+        <li><a href="#">Gift cards</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">CMTO Public Register</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>© 2026 Sabrina The RMT</p>
+    <p>Accessible information is available on request.</p>
+  </div>
+</footer>
+
+<div class="book-bar on-dark">
+  <a class="btn btn-cream" href="#">Book online<span aria-hidden="true"> ↗</span><span class="sr-only"> (opens Jane)</span></a>
+</div>
+
+<script>
+  (function () {
+    var header = document.querySelector('.site-header');
+    var btn = document.querySelector('.menu-btn');
+    btn.addEventListener('click', function () {
+      var open = header.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+</script>
+</body>
+</html>
